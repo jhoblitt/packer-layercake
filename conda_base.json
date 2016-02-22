@@ -13,7 +13,8 @@
       "type": "shell",
       "inline": [
         "yum install -y curl sudo",
-        "sed -i 's/^.*requiretty/#Defaults requiretty/' /etc/sudoers"
+        "sed -i 's/^.*requiretty/#Defaults requiretty/' /etc/sudoers",
+        "echo '%wheel ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers"
       ]
     },
     {
