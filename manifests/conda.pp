@@ -72,3 +72,15 @@ package {[
   ensure  => present,
   require =>  Class['epel'],
 }
+
+# convience packages copied from puppet-lsststcak
+package {[
+  'screen',
+  'tmux',
+  'tree',
+  'vim-enhanced',
+  'emacs-nox',
+]:
+  ensure  => present,
+  require =>  Class['epel'],
+}
