@@ -39,35 +39,25 @@ group { $stack_group:
 # * the conda-recipes glib package, which is needed by mysqlproxy, requires
 #   unxz to unpack the tarball
 package {[
-  'bison',
   'curl',
-  'blas',
-  'bzip2-devel',
   'bzip2',
-  'flex',
-  'fontconfig',
-  'freetype-devel',
-  'gcc-c++',
-  'gcc-gfortran',
-  'libXext',
-  'libXrender',
-  'libXt-devel',
   'make',
-  'openssl-devel',
   'patch',
-  'perl',
-  'readline-devel',
   'tar',
-  'zlib-devel',
-  'ncurses-devel',
-  'cmake',
-  'glib2-devel',
-  'java-1.7.0-openjdk',
-  'gettext',
-  'curl-devel',
+  'zlib',
+  #'java-1.7.0-openjdk', # jenkins client
   'git',
-  'e2fsprogs-devel',
   'xz',
+  'glibc-headers',
+  'glibc-devel', # include <gnu/stubs-64.h>
+  'bzip2-devel', # headers needed by boost -- aparently not provided by the conda package???
+  'flex', # doxygen requires
+  'bison', # doxygen requires
+  'ncurses-devel', # mariadb needs -- conda ncurses package didn't work
+  'readline-devel', # lua needs
+  'openssl-devel', # needed by libevent  #include <openssl/bio.h> -- did not seem to work with conda openssl package
+  'pkgconfig', # needed by lsst-glib -- conda pkgconfig package does not include the pkg-config binary
+  'gettext', # needed by lsst-glib
 ]:
   ensure  => present,
   require =>  Class['epel'],
